@@ -1,5 +1,5 @@
 import gspread 
-from google.oauth2.sevice_account import Credentials 
+from google.oauth2.service_account import Credentials 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -9,10 +9,18 @@ SCOPE = [
 
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorise(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open("love_sandwhiches")
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open("Love_sandwiches")
 
-SALES = SHEET.worksheet("sales")
+def get_sales_data():
+    """
+    Get sales figures input from the user
+    """
+    print("Please enter sales data from the last market")
+    print("data should be six numbers, seperated by commas")
+    print("Example: 10,20,30,40,50,60\n")
 
-data = sales.get_all_values()
-print(data)
+    data_str = input("Enter your data here")
+    print(f"The data provided is {data_str}")
+
+get_sales_data()
