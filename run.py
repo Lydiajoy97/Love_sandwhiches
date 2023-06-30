@@ -52,9 +52,10 @@ def update_sales_worksheet(data):
     Update sales worsheet
     """
     print("updating sales worksheet...")
-    sales_worsheet = SHEET.worsheet("sales")
-    sales_worsheet.append_row(data)
+    sales_worksheet = SHEET.worksheet("sales")
+    sales_worksheet.append_row(data)
     print("sales worksheet updated sucessfully.\n")
 
 data = get_sales_data()
 sales_data = [int(num) for num in data]
+update_sales_worksheet(sales_data)
